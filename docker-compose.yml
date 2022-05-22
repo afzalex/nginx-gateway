@@ -4,21 +4,21 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:17.0.1
-    container_name: keycloak
+    container_name: gw-keycloak
     command: start-dev
     ports:
-      - "7223:8080"
+      - "7251:8080"
     environment:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=Password#123
 
-  nginx:
+  openresty:
     depends_on:
       - keycloak
     build: ./nginx
-    container_name: scratch
+    container_name: gw-openresty
     ports: 
-      - "7222:80"
+      - "7252:80"
     volumes:
       - ./.data/root:/root
 
@@ -32,4 +32,4 @@ services:
       - ./.data/root:/root
       - ./testapp/app:/app
     ports:
-      - "7221:80"
+      - "7253:80"
