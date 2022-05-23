@@ -23,9 +23,12 @@ app.mount("/tailwind/", StaticFiles(directory="play-tailwind-main"), name="stati
 def read_root():
     return '''
 <html>
-<body style="text-align: center">
-<h3> Hello World </h3>
-<h5><a href="/logout">Logout</a></h5>
+<body style="display: flex; align-items: center; justify-content: center; background-color: #edf4ff;">
+    <div style="text-align: center; padding-bottom: 150px">
+        <h3> Hello World </h3>
+        <h5><a href="/logout">Logout</a></h5>
+        <br /><br /><br /><br />
+    </div>
 </body>
 </html>
     '''
